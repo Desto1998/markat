@@ -1,0 +1,417 @@
+/* =========================================================
+ * Bootstrap year calendar v1.1.0
+ * Repo: https://github.com/Paul-DS/bootstrap-year-calendar
+ * =========================================================
+ * Created by Paul David-Sivelle
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+/* Main */
+.calendar {
+    padding: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    overflow: auto;
+    direction: ltr;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.calendar.calendar-rtl {
+    direction: rtl;
+}
+
+.calendar.calendar-rtl table tr td span {
+    float: right;
+}
+
+.calendar table {
+    margin: auto;
+}
+
+.calendar table td,
+.calendar table th {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border: none;
+    padding: 4px 5px;
+    font-size: 12px;
+}
+
+/* Header */
+.calendar .calendar-header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.calendar .calendar-header table {
+    width: 100%;
+}
+
+.calendar .calendar-header table th {
+    font-size: 22px;
+    padding: 5px 10px;
+}
+
+.calendar .calendar-header table th:hover {
+    background: #eeeeee;
+    cursor: pointer;
+}
+
+.calendar .calendar-header table th.disabled,
+.calendar .calendar-header table th.disabled:hover {
+    background: none;
+    cursor: default;
+    color: white;
+}
+
+.calendar .calendar-header table th.prev,
+.calendar .calendar-header table th.next {
+    width: 20px;
+}
+
+.calendar .year-title {
+    font-weight: bold;
+    text-align: center;
+    height: 20px;
+    width: auto;
+}
+
+.calendar .year-neighbor {
+    color: #aaaaaa;
+}
+
+.calendar .year-neighbor2 {
+    color: #dddddd;
+}
+
+/* Months */
+.calendar .months-container {
+    width: 100%;
+    display: none;
+}
+
+.calendar .month-container {
+    min-width: 180px;
+    text-align: center;
+    height: 200px;
+    padding: 0;
+}
+
+.calendar table.month th.month-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.calendar table.month th.day-header {
+    font-size: 14px;
+}
+
+
+.calendar table.month tr td,
+.calendar table.month tr th {
+    padding: 0;
+}
+
+.calendar table.month td.week-number {
+    cursor: default;
+    font-weight: bold;
+    border-right: 1px solid #eee;
+    padding: 5px;
+}
+
+.calendar .round-left {
+    -webkit-border-radius: 8px 0 0 8px;
+    -moz-border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px;
+}
+
+.calendar .round-right {
+    webkit-border-radius: 0 8px 8px 0;
+    -moz-border-radius: 0 8px 8px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.calendar table.month tr td .day-content {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 0 !important;
+    padding: 5px 6px;
+}
+
+.table-striped .calendar table.month tr td,
+.table-striped .calendar table.month tr th {
+    background-color: transparent;
+}
+
+.calendar table.month td.day .day-content:hover {
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.calendar table.month tr td.old,
+.calendar table.month tr td.new,
+.calendar table.month tr td.old:hover,
+.calendar table.month tr td.new:hover {
+    background: none;
+    cursor: default;
+}
+
+.calendar table.month tr td.disabled,
+.calendar table.month tr td.disabled:hover {
+    color: #dddddd;
+}
+
+.calendar table.month td.day.disabled .day-content:hover {
+    background: none;
+    cursor: default;
+}
+
+.calendar table.month tr td.range .day-content {
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.calendar table.month tr td.range.range-start .day-content {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.calendar table.month tr td.range.range-end .day-content {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.calendar-context-menu,
+.calendar-context-menu .submenu {
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    position: absolute;
+    display: none;
+}
+
+.calendar-context-menu .item {
+    padding: 5px 10px;
+    cursor: pointer;
+    display: table;
+    width: 100%;
+}
+
+.calendar-context-menu .item:hover {
+    background: #eee;
+}
+
+.popover {
+    z-index: 9999 !important;
+}
+
+.calendar-context-menu .item .content {
+    display: table-cell;
+}
+
+.calendar-context-menu .item span {
+    display: table-cell;
+    padding-left: 10px;
+    text-align: right;
+}
+
+.calendar-context-menu .item span:last-child {
+    display: none;
+}
+
+.calendar-context-menu .submenu {
+    left: 100%;
+    margin-top: -6px;
+}
+
+.calendar-context-menu .item:hover > .submenu {
+    display: block;
+}
+
+.tooltip.bottom-left .tooltip-arrow {
+    top: 0;
+    right: 5px;
+    margin-top: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #000
+}
+
+.tooltip.bottom-right .tooltip-arrow {
+    top: 0;
+    left: 5px;
+    margin-top: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #000
+}
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    display: none;
+    max-width: 276px;
+    padding: 1px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    line-break: auto
+}
+
+.popover.top {
+    margin-top: -10px
+}
+
+.popover.right {
+    margin-left: 10px
+}
+
+.popover.bottom {
+    margin-top: 10px
+}
+
+.popover.left {
+    margin-left: -10px
+}
+
+.popover-title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 5px 5px 0 0
+}
+
+.popover-content {
+    padding: 9px 14px
+}
+
+.popover > .arrow, .popover > .arrow:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid
+}
+
+.popover > .arrow {
+    border-width: 11px
+}
+
+.popover > .arrow:after {
+    content: "";
+    border-width: 10px
+}
+
+.popover.top > .arrow {
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color: #999;
+    border-top-color: rgba(0, 0, 0, .25);
+    border-bottom-width: 0
+}
+
+.popover.top > .arrow:after {
+    bottom: 1px;
+    margin-left: -10px;
+    content: " ";
+    border-top-color: #fff;
+    border-bottom-width: 0
+}
+
+.popover.right > .arrow {
+    top: 50%;
+    left: -11px;
+    margin-top: -11px;
+    border-right-color: #999;
+    border-right-color: rgba(0, 0, 0, .25);
+    border-left-width: 0
+}
+
+.popover.right > .arrow:after {
+    bottom: -10px;
+    left: 1px;
+    content: " ";
+    border-right-color: #fff;
+    border-left-width: 0
+}
+
+.popover.bottom > .arrow {
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-width: 0;
+    border-bottom-color: #999;
+    border-bottom-color: rgba(0, 0, 0, .25)
+}
+
+.popover.bottom > .arrow:after {
+    top: 1px;
+    margin-left: -10px;
+    content: " ";
+    border-top-width: 0;
+    border-bottom-color: #fff
+}
+
+.popover.left > .arrow {
+    top: 50%;
+    right: -11px;
+    margin-top: -11px;
+    border-right-width: 0;
+    border-left-color: #999;
+    border-left-color: rgba(0, 0, 0, .25)
+}
+
+.popover.left > .arrow:after {
+    right: 1px;
+    bottom: -10px;
+    content: " ";
+    border-right-width: 0;
+    border-left-color: #fff
+}
